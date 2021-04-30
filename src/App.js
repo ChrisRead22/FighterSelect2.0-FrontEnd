@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import React, {useState,useEffect} from "React"
+import React, {useState,useEffect} from "react"
 import FightingGameMenu from "./FightingGameMenu";
 import FightStyleMenu from "./FightStyleMenu";
 import FighterContainer from "./FighterContainer";
@@ -10,26 +10,58 @@ function App() {
   const [fighters, setFighters] = useState([])
 
 
+  
+
   useEffect(() => {
     fetch("http://localhost:3000/fighters")
-    .then(resp = resp.json())
+    .then(r => r.json())
     .then((fighterArray) => {
       setFighters(fighterArray);
     })
   }, []);
 
+  function addFighter(newFighter) {
+    const updatedFighterArray = [...fighters, newFighter];
+    setFighters(updatedFighterArray);
+  }
+
+  function deleteFighter(id) {
+    const updatedFighterArray = fighters.filter((fighter) => fighter.id !== id);
+  }
+
+  function updateFighter(updatedFighter) {
+    const updatedFighterArray = fighters.map((fighter) => {
+      if (fighter.id == updatedFighter.id) {
+        return updatedFighter;
+      } else {
+        return fighter;
+      }
+    });
+    setFighters(updatedFighterArray);
+  }
+
+
+
   return (
-    <Router>
     <div className="App">
+      <Router>
+        <Switch>
 
-      <Switch>
-        <Route path="/fighterContainer">
-      <FighterContainer />
-      </Route>
+          <Route path="/FighterContainer">
+            <FighterContainer fighters={fighters} deleteFighter={deleteFighter} addFighter={addFighter} updateFighter={updateFighter}/>
+          </Route>
+          
+          <Route path="/FightStyleMenu/:id">
+            <FightStyleMenu/>
+          </Route>
 
-      </Switch>
+          <Route path="/">
+            <FightingGameMenu/>
+          </Route>
+
+        </Switch>
+      </Router>
     </div>
-    </Router>
   );
 }
 

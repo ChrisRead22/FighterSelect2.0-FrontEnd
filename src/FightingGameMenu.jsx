@@ -1,19 +1,32 @@
-import React from "React";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom"
 
 
 
+
+
 const FightingGameMenu = () => {
+    const [fightingGames, setFightingGames] = useState([])
+
+
+  
+
+  useEffect(() => {
+    fetch("http://localhost:3000/fighting_games")
+    .then(r => r.json())
+    .then((fighterArray) => {
+        setFightingGames(fighterArray);
+    })
+  }, []);
     return (
         <div className="landingPage">
             <h2> SELECT FIGHTING GAME </h2>  
-            <Link to="FightStyleMenu">
-            <button>Tekken 7</button> <button>Street Fighter V</button>
-            <button>Mortal Kombat 11</button> <button>Injustice 2</button>
-            </Link>
 
-
-
+            {fightingGames.map(game => {
+                return (<Link to={`/FightStyleMenu/${game.id}`} params={{id: game.id}} key={game.id}>
+                <button type="button">{game.name} + {game.id} </button> 
+                </Link>)
+            })}
         </div>
     );
 };
