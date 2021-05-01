@@ -24,7 +24,7 @@ const FightingGameMenu = () => {
 
             {fightingGames.map(game => {
                 return (<Link to={`/FightStyleMenu/${game.id}`} params={{id: game.id}} key={game.id}>
-                <button type="button">{game.name} + {game.id} </button> 
+                <button type="button">{game.name}</button> 
                 </Link>)
             })}
         </div>
@@ -34,6 +34,6 @@ const FightingGameMenu = () => {
 
 
 
-
+// + {game.id} 
 
 export default FightingGameMenu;
