@@ -39,20 +39,22 @@ function App() {
     });
     setFighters(updatedFighterArray);
   }
-
-
-
   return (
     <div className="App">
       <Router>
         <Switch>
 
-          <Route path="/FighterContainer">
-            <FighterContainer fighters={fighters} deleteFighter={deleteFighter} addFighter={addFighter} updateFighter={updateFighter}/>
+          <Route path="/FighterContainer" render={(props)=> <FighterContainer 
+          fighters={fighters} 
+          deleteFighter={deleteFighter} 
+          addFighter={addFighter} 
+          updateFighter={updateFighter}
+          props={props}/>}>
+            
           </Route>
           
-          <Route path="/FightStyleMenu/:id">
-            <FightStyleMenu/>
+          <Route path="/FightStyleMenu" render={(props)=> <FightStyleMenu {...props} />}>
+            
           </Route>
 
           <Route path="/">

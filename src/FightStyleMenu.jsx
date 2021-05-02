@@ -12,17 +12,18 @@ const FightStyleMenu = (props) => {
       .then((fighterArray) => {
           setFightingStyles(fighterArray);
       })
+      
     }, []);
-    // id is the id of the games
-    let {id}= useParams();
+   
+    const gameId = props.location.state.gameId
     
     return (
         <div>
-             <h3>ID: {id}</h3>
+             {/* <h3>ID: {this.props.location}</h3> */}
         <h2>SELECT YOUR FIGHTSTYLE</h2>
             {/* <Link to="/FighterContainer"> */}
         {fightingStyles.map(style => {
-            return (<Link to={`/FighterContainer/${id}/${style.id}`}><button key={style.id} >{style.name}</button></Link>)
+            return (<Link to={{pathname:"/FighterContainer", state:{gameId:gameId,fightStyleId:style.id}}}><button key={style.id} >{style.name}</button></Link>)
         })}
 
         {/* <button>Brawler</button><br></br>
