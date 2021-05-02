@@ -18,6 +18,7 @@ const FightingGameMenu = () => {
         setFightingGames(fighterArray);
     })
   }, []);
+  
     return (
         <div className="landingPage">
             <h2> SELECT FIGHTING GAME </h2>  

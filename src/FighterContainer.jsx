@@ -26,7 +26,7 @@ const FighterContainer = ({fighters, addFighter, deleteFighter, updateFighter={u
     return (
     <div>
     {id}
-     <NewFighterForm addFighter={addFighter} />
+     <NewFighterForm addFighter={addFighter}/>
     {allFighters}
     </div>
     );
