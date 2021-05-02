@@ -79,7 +79,7 @@ function NewFighterForm({ addFighter }) {
             </select>
             <select onChange={(event) => setFightingStyle(event.target.value)}>
                 {fightingStyles.map(game =>{
-                return <option value={game.id} key={game.id} ></option>
+                return <option value={game.id} key={game.id}>{game.name}</option>
                 })}
 
             </select>
