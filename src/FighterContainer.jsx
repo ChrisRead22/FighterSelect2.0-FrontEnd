@@ -1,7 +1,7 @@
 import React from 'react';
 import NewFighterForm from './NewFighterForm';
 import FighterCard from './FighterCard';
-import {useParams} from 'react-router-dom'
+// import {useParams} from 'react-router-dom'
 
 const FighterContainer = ({fighters, addFighter, deleteFighter, updateFighter={updateFighter},props},) => {
 
@@ -33,7 +33,7 @@ const FighterContainer = ({fighters, addFighter, deleteFighter, updateFighter={u
     <div>
    
      <NewFighterForm addFighter={addFighter}/>
-     <p>Hello </p>
+     
     {allFighters}
     </div>
     );

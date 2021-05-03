@@ -27,6 +27,7 @@ function App() {
 
   function deleteFighter(id) {
     const updatedFighterArray = fighters.filter((fighter) => fighter.id !== id);
+    setFighters(updatedFighterArray);
   }
 
   function updateFighter(updatedFighter) {
