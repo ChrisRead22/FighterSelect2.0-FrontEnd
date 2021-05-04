@@ -1,6 +1,7 @@
 import React from 'react';
 import NewFighterForm from './NewFighterForm';
 import FighterCard from './FighterCard';
+import { Link } from "react-router-dom"
 // import {useParams} from 'react-router-dom'
 
 const FighterContainer = ({fighters, addFighter, deleteFighter, updateFighter={updateFighter},props},) => {
@@ -35,6 +36,11 @@ const FighterContainer = ({fighters, addFighter, deleteFighter, updateFighter={u
      <NewFighterForm addFighter={addFighter}/>
      
     {allFighters}
+        <br></br>
+        <br></br>
+        <Link to={{pathname:"/FightingGameMenu/"}}>
+        <button type="Main Menu"> Main Menu </button>
+        </Link>
     </div>
     );
 
